@@ -9,4 +9,5 @@ import { RouterOutlet } from '@angular/router';
 })
 export class App {
   protected readonly title = signal('aboutus-app');
+  year = new Date().getFullYear();
 }
