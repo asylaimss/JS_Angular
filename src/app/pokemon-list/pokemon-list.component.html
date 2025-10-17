@@ -1,0 +1,10 @@
+<div class="pokemon-container">
+  <h3>Pokémon List</h3>
+  <button (click)="loadPokemons()">Load Pokémons</button>
+
+  <p *ngIf="loading">Loading...</p>
+
+  <ul *ngIf="!loading">
+    <li *ngFor="let p of pokemons">{{ p.name }}</li>
+  </ul>
+</div>

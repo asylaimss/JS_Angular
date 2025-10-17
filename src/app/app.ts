@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, PokemonListComponent],
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })
@@ -16,17 +17,26 @@ export class AppComponent {
 
   photoUrl = 'https://cdn-icons-png.flaticon.com/512/847/847969.png';
   isButtonDisabled = false;
-  likes = 0;
 
+  likes = 0;
   messageVisible = false;
-  likeTeam() { this.likes++; }
-  toggleMessage() { this.messageVisible = !this.messageVisible; }
+
+  likeTeam() {
+    this.likes++;
+  }
+
+  toggleMessage() {
+    this.messageVisible = !this.messageVisible;
+  }
 
   name = '';
   email = '';
   subscribed = false;
+
   subscribe() {
-    if (this.email.trim() !== '') this.subscribed = true;
+    if (this.email.trim() !== '') {
+      this.subscribed = true;
+    }
   }
 
   year = new Date().getFullYear();
