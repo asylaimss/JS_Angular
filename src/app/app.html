@@ -1,22 +1,41 @@
+<!-- src/app/app.html -->
 <main class="container">
-  <h1>About Us</h1>
-  <p>Welcome to our Angular project! 🎉</p>
+  <h1>{{ title }}</h1>
+  <p>{{ mission }}</p>
 
-  <h2>Contacts</h2>
-  <ul>
-    <li>Email: team@example.com</li>
-    <li>Telegram: <a href="https://t.me/yourteam" target="_blank">t.me/yourteam</a></li>
-    <li>GitHub: <a href="https://github.com/your-org" target="_blank">github.com/your-org</a></li>
-  </ul>
+  <img [src]="photoUrl" alt="Our Team" width="150">
 
   <h2>Our Team</h2>
   <div>
-    <p><strong>Member 1</strong> — Frontend Developer</p>
-    <p><strong>Member 2</strong> — Backend Developer</p>
-    <p><strong>Member 3</strong> — Designer</p>
+    <p><strong>Member 1</strong></p>
+    <p><strong>Member 2</strong></p>
+    <p><strong>Member 3</strong></p>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <button (click)="likeTeam()">👍 Like</button>
+    <span>Likes: {{ likes }}</span>
+  </div>
+
+  <div style="margin-top: 10px;">
+    <button (click)="toggleMessage()">Toggle Message</button>
+    <p *ngIf="messageVisible">Thank you for visiting!</p>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <label>Your Name:</label>
+    <input [(ngModel)]="name" placeholder="Enter your name">
+    <p *ngIf="name">Hello, {{ name }}!</p>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <label>Email:</label>
+    <input [(ngModel)]="email" placeholder="Leave your email">
+    <button (click)="subscribe()" [disabled]="email.trim() === ''">Subscribe</button>
+    <p *ngIf="subscribed">Thanks, {{ email }}, we'll be in touch!</p>
   </div>
 
   <footer>
-    <small>&copy; {{ year }} Our Team</small>
+    <small>&copy; {{ year }}</small>
   </footer>
 </main>
