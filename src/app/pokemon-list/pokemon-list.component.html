@@ -1,10 +1,20 @@
 <div class="pokemon-container">
   <h3>Pokémon List</h3>
-  <button (click)="loadPokemons()">Load Pokémons</button>
+
+  <div class="controls">
+    <input
+      type="text"
+      placeholder="Search Pokémon..."
+      (input)="searchPokemon($event.target.value)"
+    />
+    <button (click)="loadAll()">Load All</button>
+  </div>
 
   <p *ngIf="loading">Loading...</p>
+  <p *ngIf="!loading && errorMsg">{{ errorMsg }}</p>
+  <p *ngIf="!loading && !errorMsg && pokemons.length === 0">No results found</p>
 
-  <ul *ngIf="!loading">
+  <ul *ngIf="!loading && !errorMsg && pokemons.length">
     <li *ngFor="let p of pokemons">{{ p.name }}</li>
   </ul>
 </div>
