@@ -1,0 +1,10 @@
+<section class="catalog">
+  <div class="product" *ngFor="let p of filtered">
+    <img [src]="p.image" alt="{{ p.name }}" 
+     (error)="p.image='https://via.placeholder.com/300x200?text=No+Image'">
+    <h4>{{ p.name }}</h4>
+    <p class="desc">{{ p.description }}</p>
+    <p class="price">{{ p.price }}</p>
+    <button>Add to cart</button>
+  </div>
+</section>

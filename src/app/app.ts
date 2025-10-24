@@ -1,12 +1,20 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { HeaderComponent } from './components/header/header';
+import { SearchComponent } from './components/search/search';
+import { UserListComponent } from './components/user-list/user-list';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [CommonModule, HeaderComponent, SearchComponent, UserListComponent],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrls: ['./app.css']
 })
-export class App {
-  protected readonly title = signal('mid-angular-app');
+export class AppComponent {
+  searchTerm = '';
+
+  onSearchChange(value: string) {
+    this.searchTerm = value;
+  }
 }
